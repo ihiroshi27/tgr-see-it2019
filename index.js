@@ -21,6 +21,16 @@ app.get('/showbyID/:id', function(req, res) {
     });
 });
 
+app.post('/addUser', function(req, res) {
+    var user = req.body;
+    fs.readFile(path.join(__dirname, "users.json"), 'utf8', function(err, data) {
+        let json = JSON.parse(data);
+        let jsonCount = Object.keys(json).length;
+        json[++jsonCount] = user;
+        res.json(json);
+    });
+});
+
 var server = app.listen(8080, function () {
     var host = server.address().address
     var port = server.address().port
