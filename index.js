@@ -26,7 +26,9 @@ app.post('/addUser', function(req, res) {
     fs.readFile(path.join(__dirname, "users.json"), 'utf8', function(err, data) {
         let json = JSON.parse(data);
         let jsonCount = Object.keys(json).length;
-        json['user' + (jsonCount + 1)] = user;
+        let id = jsonCount + 1;
+        user.id = id;
+        json['user' + id] = user;
         res.json(json);
     });
 });
@@ -37,8 +39,12 @@ app.post('/addMultiUser', function(req, res) {
         let json = JSON.parse(data);
         let jsonCount = Object.keys(json).length;
         
+        jsonCount++;
         for(var i in users) {
-            json['user' + (++jsonCount)] = users[i];
+            let id = jsonCount++;
+            users[i].id = id;
+            console.log(id);
+            json['user' + id] = users[i];
         }
         res.json(json);
     });
