@@ -43,7 +43,6 @@ app.post('/addMultiUser', function(req, res) {
         for(var i in users) {
             let id = jsonCount++;
             users[i].id = id;
-            console.log(id);
             json['user' + id] = users[i];
         }
         res.json(json);
