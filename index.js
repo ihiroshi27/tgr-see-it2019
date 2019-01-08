@@ -17,7 +17,7 @@ app.get('/showbyID/:id', function(req, res) {
     var id = req.params.id;
     fs.readFile(path.join(__dirname, "users.json"), 'utf8', function(err, data) {
         let json = JSON.parse(data);
-        res.json(json[id]);
+        res.json(json['user' + id]);
     });
 });
 
@@ -26,7 +26,7 @@ app.post('/addUser', function(req, res) {
     fs.readFile(path.join(__dirname, "users.json"), 'utf8', function(err, data) {
         let json = JSON.parse(data);
         let jsonCount = Object.keys(json).length;
-        json[++jsonCount] = user;
+        json['user' + (jsonCount + 1)] = user;
         res.json(json);
     });
 });
