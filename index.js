@@ -13,6 +13,14 @@ app.get('/listUsers', function(req, res) {
     });
 });
 
+app.get('/showbyID/:id', function(req, res) {
+    var id = req.params.id;
+    fs.readFile(path.join(__dirname, "users.json"), 'utf8', function(err, data) {
+        let json = JSON.parse(data);
+        res.json(json[id]);
+    });
+});
+
 var server = app.listen(8080, function () {
     var host = server.address().address
     var port = server.address().port
