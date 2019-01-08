@@ -31,6 +31,19 @@ app.post('/addUser', function(req, res) {
     });
 });
 
+app.post('/addMultiUser', function(req, res) {
+    var users = req.body.users;
+    fs.readFile(path.join(__dirname, "users.json"), 'utf8', function(err, data) {
+        let json = JSON.parse(data);
+        let jsonCount = Object.keys(json).length;
+        
+        for(var i in users) {
+            json['user' + (++jsonCount)] = users[i];
+        }
+        res.json(json);
+    });
+});
+
 var server = app.listen(8080, function () {
     var host = server.address().address
     var port = server.address().port
