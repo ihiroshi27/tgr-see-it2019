@@ -1,0 +1,23 @@
+{
+  "name": "tgr-see-it2019",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ihiroshi27/tgr-see-it2019.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ihiroshi27/tgr-see-it2019/issues"
+  },
+  "homepage": "https://github.com/ihiroshi27/tgr-see-it2019#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4"
+  }
+}
