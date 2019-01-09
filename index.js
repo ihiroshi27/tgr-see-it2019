@@ -13,7 +13,17 @@ app.use(bodyParser.json());
 var Temperature = require('./model/temperature');
 
 app.post('/receiveData', function(req, res, next) {
-    var data = req.body;
+    var frames = req.body.DevEUI_uplink.payload_parsed.frames;
+    let data = {};
+    frames.forEach(function(frame) {
+        if (frame.typeString == "Analog Input") {
+            data.teamID = frame.value;
+        }
+        if (frame.typeString == "Temperature Sensor") {
+            data.temp = frame.value;
+        }
+    });
+
     Temperature.findOneAndUpdate({ teamID: data.teamID }, data, { upsert: true }, function(err) {
         if (err) next(err);
         else res.json({ "results": "Complete" });
