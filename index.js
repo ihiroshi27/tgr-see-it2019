@@ -10,5 +10,16 @@ mongoose.connect('mongodb://tgr:tgr2019@localhost:27017/hwData', { useNewUrlPars
 var app = express();
 app.use(bodyParser.json());
 
+var Temperature = require('./model/temperature');
+
+app.post('/receiveData', function(req, res, next) {
+    var data = req.body;
+    var temperature = new Temperature(data);
+    temperature.save(function(err) {
+        if (err) next(err);
+        else res.json({ "results": "Complete" });
+    });
+});
+
 var httpServer = http.createServer(app);
 httpServer.listen(80);
