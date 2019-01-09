@@ -21,5 +21,12 @@ app.post('/receiveData', function(req, res, next) {
     });
 });
 
+app.get('/showData', function(req, res, next) {
+    Temperature.find(null, function(err, record) {
+        if (err) next(err);
+        else res.json({ results: record });
+    });
+});
+
 var httpServer = http.createServer(app);
 httpServer.listen(80);
