@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var schema = mongoose.Schema({ 
-    teamID: { type: String, required: true },
+    teamID: { type: Number, required: true },
     temp: { type: Number, required: true }
 });
 
