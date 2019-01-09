@@ -12,6 +12,16 @@ app.use(bodyParser.json());
 
 var Temperature = require('./model/temperature');
 
+function validate(data) {
+    if (typeof(data.teamID) == "undefined") {
+        return new Error('Missing teamID');
+    } else if (typeof(data.temp) === "undefined") {
+        return new Error('Missing temp');
+    } else {
+        return null;
+    }
+}
+
 app.post('/receiveData', function(req, res, next) {
     var frames = req.body.DevEUI_uplink.payload_parsed.frames;
     let data = {};
@@ -24,7 +34,9 @@ app.post('/receiveData', function(req, res, next) {
         }
     });
 
-    Temperature.findOneAndUpdate({ teamID: data.teamID }, data, { upsert: true }, function(err) {
+    var err = validate(data);
+    if (err) next(err);
+    else Temperature.findOneAndUpdate({ teamID: data.teamID }, data, { upsert: true }, function(err) {
         if (err) next(err);
         else res.json({ "results": "Complete" });
     });
@@ -39,7 +51,9 @@ app.get('/showData', function(req, res, next) {
 
 app.post('/addData', function(req, res, next) {
     var data = req.body;
-    Temperature.findOneAndUpdate({ teamID: data.teamID }, data, { upsert: true }, function(err) {
+    var err = validate(data);
+    if (err) next(err);
+    else Temperature.findOneAndUpdate({ teamID: data.teamID }, data, { upsert: true }, function(err) {
         if (err) next(err);
         else res.json({ "results": "Complete" });
     });
