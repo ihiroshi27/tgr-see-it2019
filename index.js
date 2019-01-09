@@ -5,7 +5,7 @@ var path = require("path");
 var http = require("http");
 var mongoose = require("mongoose");
 
-mongoose.connect('mongodb://tgr:tgr2019@localhost:27017/tgr2019', { useNewUrlParser: true });
+mongoose.connect('mongodb://tgr:tgr2019@localhost:27017/hwData', { useNewUrlParser: true });
 
 var app = express();
 app.use(bodyParser.json());
