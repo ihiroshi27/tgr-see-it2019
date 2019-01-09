@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var schema = mongoose.Schema({ 
     teamID: String,
-    temp: Double
+    temp: Number
 });
 
 module.exports = mongoose.model('temperature', schema);
