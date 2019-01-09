@@ -38,7 +38,7 @@ app.post('/addData', function(req, res, next) {
 app.put('/editData/:teamID', function(req, res, next) {
     var teamID = req.params.teamID;
     var temp = req.body.temp;
-    Temperature.update({ teamID: teamID }, { $set: { temp: temp } }, function(err) {
+    Temperature.updateOne({ teamID: teamID }, { $set: { temp: temp } }, function(err) {
         if (err) next(err);
         else res.json({ "results": "Complete" });
     });
