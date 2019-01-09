@@ -14,8 +14,7 @@ var Temperature = require('./model/temperature');
 
 app.post('/receiveData', function(req, res, next) {
     var data = req.body;
-    var temperature = new Temperature(data);
-    temperature.save(function(err) {
+    Temperature.findOneAndUpdate({ teamID: data.teamID }, data, { upsert: true }, function(err) {
         if (err) next(err);
         else res.json({ "results": "Complete" });
     });
@@ -30,8 +29,7 @@ app.get('/showData', function(req, res, next) {
 
 app.post('/addData', function(req, res, next) {
     var data = req.body;
-    var temperature = new Temperature(data);
-    temperature.save(function(err) {
+    Temperature.findOneAndUpdate({ teamID: data.teamID }, data, { upsert: true }, function(err) {
         if (err) next(err);
         else res.json({ "results": "Complete" });
     });
