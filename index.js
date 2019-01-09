@@ -46,5 +46,13 @@ app.put('/editData/:teamID', function(req, res, next) {
     });
 });
 
+app.delete('/deleteData/:teamID', function(req, res, next) {
+    var teamID = req.params.teamID;
+    Temperature.deleteOne({ teamID: teamID }, function(err) {
+        if (err) next(err);
+        else res.json({ "results": "Complete" });
+    });
+});
+
 var httpServer = http.createServer(app);
 httpServer.listen(80);
