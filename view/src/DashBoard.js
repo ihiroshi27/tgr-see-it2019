@@ -32,14 +32,36 @@ class DashBoard extends React.Component {
                         peopleOut: json.results.sensor.peopleOut
                     });
                     break;
+                case 'beacon':
+                    var html = this.beacon.innerHTML;
+                    if (html === '<div>Waiting for activity</div>') html = "";
+
+                    var icon;
+                    var status;
+                    switch(json.results.status) {
+                        case 'enter':
+                            icon = '<i class="fas fa-walking"></i>';
+                            status = '<span style="color: rgb(123, 183, 6)">enter</span>';
+                            break;
+                        case 'leave':
+                            icon = '<i class="fas fa-walking" style="transform: scaleX(-1)"></i>'
+                            status = '<span style="color: rgb(216, 72, 61)">leave</span>';
+                            break;
+                    }
+                    var newHTML = '<div>' + icon + json.results.userID + ' has <span class="bold">' + status + '</span> at ' + json.results.datetime + ', current ' + json.results.tourists + ' users.</div>' + html;
+                    this.beacon.innerHTML = newHTML;
+                    break;
             }
         };
+    }
+    clearTourist = () => {
+
     }
     render() {
         return (
             <div id="dashboard">
                 <div className="section">
-                    <div className="status">
+                    <div className="lora">
                         <div style={{ backgroundColor: '#d8483d'}}>
                                 <i className="fas fa-thermometer-quarter"></i>{ this.state.temperature }<span className="type">%</span>
                         </div>
@@ -52,6 +74,12 @@ class DashBoard extends React.Component {
                         <div style={{ backgroundColor: 'rgb(255, 141, 0)'}}>
                             <i className="fas fa-user"></i>{ this.state.peopleOut }<span className="type">Leave</span>
                         </div>
+                    </div>
+                </div>
+                <div className="section">
+                    <div className="activity">
+                       <div className="title">Beacon Activities</div>
+                       <div className="body" ref={ div => this.beacon = div }><div>Waiting for activity</div></div>
                     </div>
                 </div>
             </div>

@@ -1,4 +1,7 @@
-#dashboard > .section > .status > div {
+#dashboard > .section {
+    margin-bottom: 20px;
+}
+#dashboard > .section > .lora > div {
     float: left;
     width: calc(25% - 5px);
     height: auto;
@@ -11,24 +14,72 @@
     text-align: right;
     line-height: 2;
 }
-#dashboard > .section > .status > div:first-child {
+#dashboard > .section > .lora > div:first-child {
     margin-left: 0px;
 }
-#dashboard > .section > .status > div > i {
+#dashboard > .section > .lora > div > i {
     font-size: 60px;
     float: left;
     line-height: 1;
     opacity: 0.5;
 }
-#dashboard > .section > .status > div > .type {
+#dashboard > .section > .lora > div > .type {
     font-size: 16px;
     padding-left: 5px;
     opacity: 0.5;
     vertical-align: middle;
 }
 
-#dashboard > .section > .status::after {
+#dashboard > .section > .lora::after {
     content: ' ';
     display: block;
     clear: both;
+}
+
+#dashboard > .section > .activity {
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+}
+#dashboard > .section > .activity > .title {
+    font-size: 1.2em;
+    padding: 10px 20px;
+    border-bottom: 1px solid rgb(230, 230, 230);
+    background-color: rgb(245, 245, 245);
+}
+#dashboard > .section > .activity > .title > i {
+    padding-right: 10px;
+}
+#dashboard > .section > .activity > .title > button {
+    float: right;
+    -webkit-appearance: none;
+    border-radius: 20px;
+    border: none;
+    color: #fff;
+    padding: 10px 30px;
+    background-color: rgb(173, 20, 20);
+}
+#dashboard > .section > .activity > .body > div {
+    padding: 20px;
+    border-bottom: 1px solid #e8e8e8;
+}
+#dashboard > .section > .activity > .body > div:last-child {
+    border-bottom: none;
+}
+#dashboard > .section > .activity > .body > div > i {
+    display: block;
+    float: left;
+    width: 30px;height: 30px;
+    text-align: center;
+    line-height: 2;
+    font-size: 15px;
+    border-radius: 100%;
+    color: #fff;
+    background-color: rgb(78, 78, 78);
+    margin-right: 5px;
+}
+#dashboard > .section > .activity > .body > div > span.bold {
+    font-weight: 700;
 }

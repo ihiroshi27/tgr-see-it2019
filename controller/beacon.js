@@ -58,6 +58,10 @@ router.post('/', function(req, res, next) {
             else if (data.status === "leave" && tourists !== 0) tourists--;
             console.log("[Beacon] Current tourists", tourists);
 
+            data.tourists = tourists;
+            wss.clients.forEach(function each(client) {
+                client.send(JSON.stringify({type:'beacon',results:data}));
+            });
             res.json({ results: "Complete" });
         }
     });
