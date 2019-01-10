@@ -14,6 +14,7 @@ app.enable('trust proxy');
 app.use(bodyParser.json());
 
 app.use('/beacon', require('./controller/beacon'));
+app.use('/lora', require('./controller/lora'));
 
 var Hour = require('./model/hour');
 
