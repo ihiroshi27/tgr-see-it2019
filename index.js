@@ -11,6 +11,8 @@ mongoose.connect('mongodb://tgr:tgr2019@localhost:27017/seeit', { useNewUrlParse
 var app = express();
 app.use(bodyParser.json());
 
+app.use('/beacon', require('./controller/beacon'));
+
 var Hour = require('./model/hour');
 
 app.get('/csv', function(req, res) {
