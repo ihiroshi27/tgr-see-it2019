@@ -2,7 +2,7 @@ var express = require('express');
 var fetch = require('node-fetch');
 var router = express.Router();
 
-var Lora = require("../model/beacon");
+var Lora = require("../model/lora");
 
 router.post('/', function(req, res, next) {
     let uplink = req.body.DevEUI_uplink;
