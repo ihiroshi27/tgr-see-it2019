@@ -4,7 +4,7 @@ var csv = require("csv-parser");
 var path = require('path');
 var router = express.Router();
 
-var Hour = require("../model/Hour");
+var Hour = require("../model/hour");
 
 router.get('/importCSV', function(req, res) {
     var results = [];
