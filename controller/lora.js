@@ -17,7 +17,7 @@ router.post('/', function(req, res, next) {
             peopleIn: frames[2].value,
             peopleOut: frames[3].value
         },
-        datetime: uplink.time
+        datetime: uplink.Time
     }
     let lora = new Lora(data);
     lora.save(function(err) {
