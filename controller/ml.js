@@ -3,6 +3,8 @@ var fs = require("fs");
 var csv = require("csv-parser");
 var path = require('path');
 var router = express.Router();
+var tf = require("@tensorflow/tfjs");
+require('@tensorflow/tfjs-node');
 
 var Hour = require("../model/hour");
 
@@ -53,5 +55,54 @@ router.get('/last-hours', function(req, res, next) {
     });
 });
 
+const sequenceLen = 10
+const normalize_value = 1800
+var model
+async function loadModelTF() {
+    model = await tf.loadModel('file://tf_model/model.json');
+    console.log("loaded");
+}
+loadModelTF()
+
+router.get("/predict", function(req, res, next) {
+    Hour.find(null, null, {sort: { date: -1 }, limit: 10 }, function(err, records) {
+        if (err) next(err);
+        else {
+            let tourists = records.map(function(record) { return record.count });
+            let data = [];
+            tourists.reverse().forEach(function(item) {
+                data.push(item/normalize_value)
+            })
+            let predictData = tf.reshape(tf.tensor2d([data]), [-1,sequenceLen,1])
+            const r = model.predict(predictData);
+            let predictResult = r.dataSync();
+            let result = []
+            let i = 0
+            for (i = 0; i < predictResult.length; i++) {
+                result.push(Math.round(predictResult[i] * normalize_value)) 
+            }
+            res.json({ "number_of_tourist": result })
+        }
+    });
+})
+
+router.post("/predict", function(req, res) {
+    let data = req.body.list
+    let newdata = []
+    let i = 0
+    for (i = 0; i < data.length; i++) {
+        newdata.push(data[i]/normalize_value)
+    }
+    data = newdata
+    console.log(data)
+    let predictData = tf.reshape(tf.tensor2d([data]), [-1,sequenceLen,1])
+    const r = model.predict(predictData);
+	let predictResult = r.dataSync();
+	let result = []
+	for (i = 0; i < predictResult.length; i++) {
+		result.push(Math.round(predictResult[i] * normalize_value)) 
+	}
+	res.json({ "number_of_tourist": result })
+})
 
 module.exports = router;
