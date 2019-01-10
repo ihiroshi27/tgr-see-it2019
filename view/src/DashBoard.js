@@ -26,7 +26,7 @@ class DashBoard extends React.Component {
             switch(json.type) {
                 case 'lora':
                     this.setState({
-                        temperature: json.resutls.sensor.temperature,
+                        temperature: json.results.sensor.temperature,
                         humidity: json.results.sensor.humidity,
                         peopleIn: json.results.sensor.peopleIn,
                         peopleOut: json.results.sensor.peopleOut
