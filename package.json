@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/ihiroshi27/tgr-see-it2019#readme",
   "dependencies": {
-    "@tensorflow/tfjs": "^0.14.2",
+    "@tensorflow/tfjs": "^0.14.1",
     "@tensorflow/tfjs-node": "^0.2.1",
     "body-parser": "^1.18.3",
     "csv-parser": "^2.1.0",
