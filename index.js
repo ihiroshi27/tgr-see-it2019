@@ -39,14 +39,4 @@ wss.on('connection', function connection(ws) {
             }
         });
     });
-   
-    // setInterval(function() {
-    //     Lora.find({}, null, { sort: { datetime: -1 }, limit: 1 }, function(err, records) {
-    //         if (err) {
-    //             console.log(err);
-    //         } else {
-    //             ws.send(JSON.stringify(records[0]));
-    //         }
-    //     });
-    // }, 30000);
 });
