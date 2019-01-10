@@ -10,7 +10,7 @@ class Navbar extends React.Component {
         return (
             <div id="navbar">
                 <div className="logo">
-                    See-It2019
+                    <img src={ PUBLIC_URL + "/logo.png" } />
                 </div>
                 <div className="section">
                     <NavLink className="link" activeClassName="active" exact to="/"><img src={ PUBLIC_URL + "/dashboard-icon.png" } />Dashboard</NavLink>
