@@ -23,12 +23,16 @@ class DashBoard extends React.Component {
         ws.onmessage = evt => { 
             let data = evt.data;
             let json = JSON.parse(data);
-            this.setState({
-                temperature: json.sensor.temperature,
-                humidity: json.sensor.humidity,
-                peopleIn: json.sensor.peopleIn,
-                peopleOut: json.sensor.peopleOut
-            });
+            switch(json.type) {
+                case 'lora':
+                    this.setState({
+                        temperature: json.resutls.sensor.temperature,
+                        humidity: json.results.sensor.humidity,
+                        peopleIn: json.results.sensor.peopleIn,
+                        peopleOut: json.results.sensor.peopleOut
+                    });
+                    break;
+            }
         };
     }
     render() {
