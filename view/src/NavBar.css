@@ -1,0 +1,43 @@
+#navbar {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 250px;
+    height: 100%;
+    background-color: #38385a;
+}
+#navbar > .logo {
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    color: #fff;
+    font-size: 35px;
+    line-height: 3;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+}
+#navbar > .section {
+    color: #fff;
+}
+#navbar > .section > a {
+    display: block;
+    width: 100%;height: auto;
+    padding: 20px 30px;
+    box-sizing: border-box;
+    font-size: 1em;
+    text-decoration: none;
+    color: #fff;
+    border-left: 4px solid transparent;
+}
+#navbar > .section > a.active, #navbar > .section > a:hover {
+    cursor: pointer;
+}
+#navbar > .section > a.active, #navbar > .section > a:hover {
+    border-left: 4px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+#navbar > .section > a > img {
+    width: 30px;
+    height: auto;
+    padding-right: 20px;
+    vertical-align: middle;
+}

@@ -1,0 +1,13 @@
+html, body { width: 100%;height: 100% }
+body {
+  margin: 0px;
+  background-color: #e8eaf6;
+  font-family: 'Kanit', sans-serif;
+  line-height: 1.5;
+  font-size: 16;
+  font-weight: 400;
+}
+#root {
+  width: 100%;
+  height: 100%;
+}
