@@ -31,7 +31,6 @@ var Lora = require('./model/lora');
 wss.on('connection', function connection(ws) {
     ws.on('message', function incoming(message) {
         Lora.find(null, null, { sort: { datetime: -1 }, limit: 1 }, function(err, records) {
-            console.log(records);
             if (err) {
                 console.log(err);
             } else {
