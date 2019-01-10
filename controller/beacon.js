@@ -7,6 +7,10 @@ var tourists = 0;
 
 router.post('/', function(req, res, next) {
     let data = req.body;
+    let reply = data.reply;
+    delete(data.reply);
+    console.log(reply);
+
     let beacon = new Beacon(data);
     beacon.save(function(err) {
         if (err) {
@@ -16,8 +20,6 @@ router.post('/', function(req, res, next) {
             else if (data.status === "leave" && tourists !== 0) tourists--;
 
             res.json({ results: "Complete" });
-            console.log(tourists);
-            console.log(req.ip);
         }
     });
 });
