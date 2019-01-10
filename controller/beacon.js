@@ -3,6 +3,32 @@ var fetch = require('node-fetch');
 var router = express.Router();
 
 var Beacon = require("../model/beacon");
+var Hour = require('../model/hour');
+
+var cron = require('cron');
+var cronJob = cron.job("0 0 * * * *", function(){
+    let date = new Date();
+
+    var lastHour = new Date(date);
+    lastHour.setHours(lastHour.getHours() - 1);
+
+    Beacon.find({ status: 'enter', datetime: { $gt: lastHour } }, function(err, records) {
+        date.setMinutes(0);
+        date.setSeconds(0);
+        date.setMilliseconds(0);
+
+        var data = {
+            date: date,
+            count: records.length
+        }
+        var hour = new Hour(data);
+        hour.save(function(err) {
+            if (err) console.log(err)
+            else console.info('[Beacon] cronJob completed', date);
+        });
+    });
+}); 
+cronJob.start();
 
 var tourists = 0;
 
