@@ -17,6 +17,10 @@ class Navbar extends React.Component {
                     <NavLink className="link" activeClassName="active" exact to="/lora"><img src={ PUBLIC_URL + "/lora-icon.png" } />LoRa</NavLink>
                     <NavLink className="link" activeClassName="active" exact to="/beacon"><img src={ PUBLIC_URL + "/line-beacon.png" } />Beacon</NavLink>
                 </div>
+                <div className="section">
+                    Department of Computer Engineering,
+                    Khon Kaen University
+                </div>
             </div>
         );
     }

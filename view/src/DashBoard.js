@@ -48,7 +48,7 @@ class DashBoard extends React.Component {
                             status = '<span style="color: rgb(216, 72, 61)">leave</span>';
                             break;
                     }
-                    var newHTML = '<div>' + icon + json.results.userID + ' has <span class="bold">' + status + '</span> at ' + json.results.datetime + ', current <span class="bold">' + json.results.tourists + '</span> users.</div>' + html;
+                    var newHTML = '<div>' + icon + json.results.userID + ' has <span class="bold">' + status + '</span> at ' + json.results.datetime + ' | current <span class="bold">' + json.results.tourists + '</span> users.</div>' + html;
                     this.beacon.innerHTML = newHTML;
                     break;
             }
