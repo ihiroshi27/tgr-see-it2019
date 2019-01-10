@@ -44,7 +44,12 @@ router.post('/', function(req, res, next) {
     let lora = new Lora(data);
     lora.save(function(err) {
         if (err) next(err);
-        else res.json({ results: "Complete" });
+        else {
+            wss.clients.forEach(function each(client) {
+                client.send(JSON.stringify(data));
+            });
+            res.json({ results: "Complete" });
+        }
     });
 });
 
