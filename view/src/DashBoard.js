@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom';
 
 import './DashBoard.css';
 
+const URL = process.env.REACT_APP_SERVER;
+
 class DashBoard extends React.Component {
     constructor(props) {
         super(props);
@@ -14,7 +16,7 @@ class DashBoard extends React.Component {
         }
     }
     componentDidMount() {
-        var ws = new WebSocket("ws://localhost:8080");
+        var ws = new WebSocket("ws://" + URL + ":8080");
         ws.onopen = () => {
             ws.send("Connected");
         }
