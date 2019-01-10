@@ -9,6 +9,7 @@ mongoose.connect('mongodb://tgr:tgr2019@localhost:27017/seeit', { useNewUrlParse
 var app = express();
 app.enable('trust proxy');
 
+app.use('/static', express.static('public'))
 app.use(bodyParser.json());
 
 app.use('/ml', require('./controller/ml'));
