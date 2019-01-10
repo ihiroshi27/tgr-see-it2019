@@ -4,7 +4,7 @@ var router = express.Router();
 
 var Lora = require("../model/lora");
 
-router.get('/amin-mon', function(req, res, next) {
+router.get('/admin-mon', function(req, res, next) {
     var lastHour = new Date();
     lastHour.setHours(lastHour.getHours() - 1);
     Lora.find({ datetime: { $gt: lastHour } }, function(err, records) {
