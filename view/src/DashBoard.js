@@ -46,7 +46,7 @@ class DashBoard extends React.Component {
                             <i className="fas fa-user"></i>{ this.state.peopleIn }<span className="type">Enter</span>
                         </div>
                         <div style={{ backgroundColor: 'rgb(255, 141, 0)'}}>
-                            <i className="fas fa-user"></i>{ this.state.peopleOut }<span className="type">Leav</span>
+                            <i className="fas fa-user"></i>{ this.state.peopleOut }<span className="type">Leave</span>
                         </div>
                     </div>
                 </div>
