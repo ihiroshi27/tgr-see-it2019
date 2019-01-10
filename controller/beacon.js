@@ -16,17 +16,22 @@ router.post('/', function(req, res, next) {
         if (err) {
             next(err);
         } else {
-            if (data.status === "enter") tourists++;
-            else if (data.status === "leave" && tourists !== 0) tourists--;
+            if (data.status === "enter") {
+                tourists++;
 
-            if (tourists > 2) {
-                if (typeof(reply) !== 'undefined') {
-                    fetch(reply, {  method: 'POST' })
-                    .then(response => response.json())
-                    .then(result => console.log(result));
+                if (tourists > 2) {
+                    if (typeof(reply) !== 'undefined') {
+                        fetch(reply, {  method: 'POST' })
+                        .then(response => response.json())
+                        .then(json => {
+                            console.log("Tell tourist to leave", json.results);
+                            console.log("Current tourists", tourists);
+                            console.log();
+                        });
+                    }
                 }
-            }
-            
+            } 
+            else if (data.status === "leave" && tourists !== 0) tourists--;
             res.json({ results: "Complete" });
         }
     });
