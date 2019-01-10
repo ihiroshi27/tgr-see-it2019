@@ -47,7 +47,7 @@ router.post('/', function(req, res, next) {
         if (err) next(err);
         else {
             wss.clients.forEach(function each(client) {
-                client.send(JSON.stringify(data));
+                client.send(JSON.stringify({type:'lora',results:data}));
             });
             res.json({ results: "Complete" });
         }
