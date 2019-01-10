@@ -40,11 +40,11 @@ class DashBoard extends React.Component {
                     var status;
                     switch(json.results.status) {
                         case 'enter':
-                            icon = '<i class="fas fa-walking"></i>';
+                            icon = '<i class="fas fa-walking" style="background-color: rgb(123, 183, 6)"></i>';
                             status = '<span style="color: rgb(123, 183, 6)">enter</span>';
                             break;
                         case 'leave':
-                            icon = '<i class="fas fa-walking" style="transform: scaleX(-1)"></i>'
+                            icon = '<i class="fas fa-walking" style="transform: scaleX(-1);background-color: rgb(216, 72, 61)"></i>'
                             status = '<span style="color: rgb(216, 72, 61)">leave</span>';
                             break;
                     }
