@@ -17,6 +17,11 @@ app.use('/ml', require('./controller/ml'));
 app.use('/beacon', require('./controller/beacon'));
 app.use('/lora', require('./controller/lora'));
 
+app.use('/dashboard', express.static(path.join(__dirname, 'view', 'build')))
+app.get('dashboard/*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'view', 'build', 'index.html'));
+});
+
 var httpServer = http.createServer(app);
 httpServer.listen(80);
 
