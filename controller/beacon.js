@@ -24,14 +24,14 @@ router.post('/', function(req, res, next) {
                         fetch(reply, {  method: 'POST' })
                         .then(response => response.json())
                         .then(json => {
-                            console.log("Tell tourist to leave", json.results);
-                            console.log("Current tourists", tourists);
-                            console.log();
+                            console.log("[Beacon] POST", reply, JSON.stringify(json));
                         });
                     }
                 }
             } 
             else if (data.status === "leave" && tourists !== 0) tourists--;
+            console.log("[Beacon] Current tourists", tourists);
+
             res.json({ results: "Complete" });
         }
     });
