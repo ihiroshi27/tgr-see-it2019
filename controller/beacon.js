@@ -17,6 +17,7 @@ router.post('/', function(req, res, next) {
 
             res.json({ results: "Complete" });
             console.log(tourists);
+            console.log(req.ip);
         }
     });
 });

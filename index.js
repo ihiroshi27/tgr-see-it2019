@@ -9,6 +9,8 @@ var mongoose = require("mongoose");
 mongoose.connect('mongodb://tgr:tgr2019@localhost:27017/seeit', { useNewUrlParser: true });
 
 var app = express();
+app.enable('trust proxy');
+
 app.use(bodyParser.json());
 
 app.use('/beacon', require('./controller/beacon'));
