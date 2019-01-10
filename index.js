@@ -54,7 +54,7 @@ app.get('/sanam/:hour', function(req, res, next) {
                     });
                 });
             } else {
-                next(new Error("Number of previous hour in record is not enought"));
+                next(new Error("Number of previous hour in record is not enough"));
             }
         }
     });
