@@ -32,6 +32,11 @@ cronJob.start();
 
 var tourists = 0;
 
+router.get('/reset', function(req, res, next) {
+    tourists = 0;
+    res.json({ results: "Complete" });
+});
+
 router.post('/', function(req, res, next) {
     let data = req.body;
     let reply = data.reply;
