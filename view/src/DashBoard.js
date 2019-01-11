@@ -78,7 +78,7 @@ class DashBoard extends React.Component {
                 </div>
                 <div className="section">
                     <div className="activity">
-                       <div className="title">Beacon Activities</div>
+                       <div className="title"><i className="fas fa-bars"></i>Beacon Activities</div>
                        <div className="body" ref={ div => this.beacon = div }><div>Waiting for activity</div></div>
                     </div>
                 </div>
