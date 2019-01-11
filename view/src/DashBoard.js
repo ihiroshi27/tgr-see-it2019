@@ -69,10 +69,10 @@ class DashBoard extends React.Component {
                             <i className="fas fa-tint"></i>{ this.state.humidity }<span className="type">%</span>
                         </div>
                         <div style={{ backgroundColor: 'rgb(123, 183, 6)'}}>
-                            <i className="fas fa-user"></i>{ this.state.peopleIn }<span className="type">Enter</span>
+                            <i className="fas fa-sign-in-alt"></i>{ this.state.peopleIn }<span className="type">Enter</span>
                         </div>
                         <div style={{ backgroundColor: 'rgb(255, 141, 0)'}}>
-                            <i className="fas fa-user"></i>{ this.state.peopleOut }<span className="type">Leave</span>
+                            <i className="fas fa-sign-out-alt"></i>{ this.state.peopleOut }<span className="type">Leave</span>
                         </div>
                     </div>
                 </div>
